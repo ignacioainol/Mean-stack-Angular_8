@@ -39,6 +39,14 @@ export class EmployeesComponent implements OnInit {
 
   }
 
+  deleteEmployee(_id: string){
+      this.employeeService.deleteEmployee(_id)
+        .subscribe(res => {
+          M.toast({html: 'Deleted Successfully'});
+          this.getEmployees();
+        });
+  }
+
   getEmployees(){
     this.employeeService.getEmployees()
       .subscribe(res => {
