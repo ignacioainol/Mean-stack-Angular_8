@@ -4,6 +4,8 @@ import { EmployeeService } from '../../services/employee.service';
 import { NgForm } from '@angular/forms';
 import { Employee } from 'src/app/models/employee';
 
+declare var M: any;
+
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
@@ -21,7 +23,8 @@ export class EmployeesComponent implements OnInit {
     //console.log(form.value);
     this.employeeService.postEmployee(form.value)
       .subscribe(res => {
-        console.log(res);
+        this.resetForm(form);
+        M.toast({html: 'Save Successfully'});
       });
   }
 
