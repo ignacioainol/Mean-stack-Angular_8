@@ -5,6 +5,7 @@
                 <div class="card-content">
                     <form #employeeForm="ngForm" (ngSubmit)=addEmployee(employeeForm)>
                         <div class="row">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] = "employeeService.selectedEmployee._id">
                             <div class="input-field">
                                 <input type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" placeholder="Enter your name">
                             </div>
@@ -45,6 +46,15 @@
                         <td>{{ employee.name }}</td>
                         <td>{{ employee.position }}</td>
                         <td>{{ employee.office }}</td>
+                        <td>
+                            <a (click)="editEmployee(employee)" style="cursor:pointer">
+                                <i class="material-icons">edit</i>
+                            </a>
+
+                            <a (click)="deleteEmployee" style="cursor:pointer">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
