@@ -40,11 +40,13 @@ export class EmployeesComponent implements OnInit {
   }
 
   deleteEmployee(_id: string){
+    if(confirm('Are ypu sure you want delete it?')){
       this.employeeService.deleteEmployee(_id)
         .subscribe(res => {
           M.toast({html: 'Deleted Successfully'});
           this.getEmployees();
         });
+    }
   }
 
   getEmployees(){
