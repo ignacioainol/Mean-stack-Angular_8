@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 
 const { mongoose } = require('./database');
@@ -15,6 +16,9 @@ app.use(cors({ origin: 'http://localhost:4200'}));
 
 //Routes
 app.use('/api/employees', require('./routes/employee.routes'));
+
+//static files
+app.use(express.static(path.join(__dirname + './../dist/frontend')));
 
 //Starting
 app.listen(app.get('port'), () => {
